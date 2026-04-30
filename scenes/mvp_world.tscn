@@ -1,13 +1,28 @@
 [gd_scene format=3 uid="uid://bmyfd50xq3qd6"]
 
-[ext_resource type="Texture2D" uid="uid://cytfax6vhxw8a" path="res://sprites/the-large-open-field-of-grass-with-a-clear-blue-sky-photo.jpeg" id="1_jxbi4"]
+[ext_resource type="Script" uid="uid://nwri42mittbv" path="res://scripts/world_generator.gd" id="1_uejoe"]
 [ext_resource type="PackedScene" uid="uid://ddi7x0qr8dv65" path="res://scenes/Player.tscn" id="1_yb3dy"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jxbi4"]
+load_path = "res://.godot/imported/desert.png-45d3775e31c4f7976dae877a703302cd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xy8gb"]
+load_path = "res://.godot/imported/forest.png-51955283c4c4a703b4cd3676e8a03b74.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ahnoh"]
+load_path = "res://.godot/imported/grass.png-1f3ef5ec5f15392a65a102b36d3eef7b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wweom"]
+load_path = "res://.godot/imported/snow.png-af08ab8ca634b21f19fe377e55287eba.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_88sky"]
+load_path = "res://.godot/imported/tundra.png-203de70c429fb81870ff560591f19174.ctex"
 
 [node name="MvpWorld" type="Node2D" unique_id=1027653833]
 
-[node name="TheLargeOpenFieldOfGrassWithAClearBlueSkyPhoto" type="Sprite2D" parent="." unique_id=1464793248]
-position = Vector2(374, 205)
-texture = ExtResource("1_jxbi4")
+[node name="WorldGenerator" type="Node2D" parent="." unique_id=1458857031]
+script = ExtResource("1_uejoe")
+biome_textures = Array[Texture2D]([SubResource("CompressedTexture2D_jxbi4"), SubResource("CompressedTexture2D_xy8gb"), SubResource("CompressedTexture2D_ahnoh"), SubResource("CompressedTexture2D_wweom"), SubResource("CompressedTexture2D_88sky")])
 
 [node name="Player" parent="." unique_id=252217149 instance=ExtResource("1_yb3dy")]
 position = Vector2(82, 82)
