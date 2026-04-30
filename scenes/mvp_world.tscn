@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://bmyfd50xq3qd6"]
 
+[ext_resource type="Texture2D" uid="uid://cytfax6vhxw8a" path="res://sprites/the-large-open-field-of-grass-with-a-clear-blue-sky-photo.jpeg" id="1_jxbi4"]
+[ext_resource type="PackedScene" uid="uid://ddi7x0qr8dv65" path="res://scenes/Player.tscn" id="1_yb3dy"]
+
 [node name="MvpWorld" type="Node2D" unique_id=1027653833]
+
+[node name="TheLargeOpenFieldOfGrassWithAClearBlueSkyPhoto" type="Sprite2D" parent="." unique_id=1464793248]
+position = Vector2(374, 205)
+texture = ExtResource("1_jxbi4")
+
+[node name="Player" parent="." unique_id=252217149 instance=ExtResource("1_yb3dy")]
+position = Vector2(82, 82)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=169907874]
