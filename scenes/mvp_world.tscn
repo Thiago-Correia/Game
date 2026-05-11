@@ -1,30 +1,72 @@
 [gd_scene format=3 uid="uid://bmyfd50xq3qd6"]
 
-[ext_resource type="Script" uid="uid://nwri42mittbv" path="res://scripts/world_generator.gd" id="1_uejoe"]
+[ext_resource type="Texture2D" uid="uid://clmhbb41ivd3j" path="res://sprites/biomes/Grass_Tileset_2.png" id="1_ahnoh"]
 [ext_resource type="PackedScene" uid="uid://ddi7x0qr8dv65" path="res://scenes/Player.tscn" id="1_yb3dy"]
+[ext_resource type="Script" uid="uid://crj6tpchu81yp" path="res://scripts/voronoi_gen.gd" id="2_xy8gb"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jxbi4"]
-load_path = "res://.godot/imported/desert.png-45d3775e31c4f7976dae877a703302cd.ctex"
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wweom"]
+texture = ExtResource("1_ahnoh")
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+4:2/0 = 0
+6:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+8:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+0:7/0 = 0
+2:7/0 = 0
+4:7/0 = 0
+6:7/0 = 0
+8:7/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xy8gb"]
-load_path = "res://.godot/imported/forest.png-51955283c4c4a703b4cd3676e8a03b74.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ahnoh"]
-load_path = "res://.godot/imported/grass.png-1f3ef5ec5f15392a65a102b36d3eef7b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wweom"]
-load_path = "res://.godot/imported/snow.png-af08ab8ca634b21f19fe377e55287eba.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_88sky"]
-load_path = "res://.godot/imported/tundra.png-203de70c429fb81870ff560591f19174.ctex"
+[sub_resource type="TileSet" id="TileSet_88sky"]
+sources/0 = SubResource("TileSetAtlasSource_wweom")
 
 [node name="MvpWorld" type="Node2D" unique_id=1027653833]
 
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=901336777 node_paths=PackedStringArray("tilemap")]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(8, 8)
+tile_set = SubResource("TileSet_88sky")
+script = ExtResource("2_xy8gb")
+tilemap = NodePath(".")
+map_width = 512
+map_height = 512
+biome_seed_count = 12
+world_seed = 9642
+border_noise_strength = 5.105
+
 [node name="WorldGenerator" type="Node2D" parent="." unique_id=1458857031]
-script = ExtResource("1_uejoe")
-biome_textures = Array[Texture2D]([SubResource("CompressedTexture2D_jxbi4"), SubResource("CompressedTexture2D_xy8gb"), SubResource("CompressedTexture2D_ahnoh"), SubResource("CompressedTexture2D_wweom"), SubResource("CompressedTexture2D_88sky")])
 
 [node name="Player" parent="." unique_id=252217149 instance=ExtResource("1_yb3dy")]
 position = Vector2(82, 82)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=169907874]
+zoom = Vector2(0.005, 0.005)

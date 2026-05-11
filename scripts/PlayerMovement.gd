@@ -2,7 +2,7 @@ extends Node
 
 @onready var Player: Node2D = $"."
 
-@export var speed := 4
+@export var speed := 100
 
 @export var dash_speed := 20
 @export var dash_duration := 0.25
