@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://ddi7x0qr8dv65"]
 
-[ext_resource type="Script" uid="uid://cga5ewx61bnod" path="res://scripts/PlayerMovement.gd" id="1_p0vlq"]
+[ext_resource type="Script" uid="uid://dy275dsoejmdj" path="res://scripts/player/PlayerController.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://b5lcdmg7getfd" path="res://sprites/icon.svg" id="2_v6fml"]
+[ext_resource type="Script" uid="uid://ctswksuuk1ybr" path="res://scripts/HealthComponent.gd" id="3_mdl7e"]
+[ext_resource type="Script" uid="uid://cga5ewx61bnod" path="res://scripts/player/PlayerMovement.gd" id="4_qu4a1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
 size = Vector2(128, 128)
 
-[node name="Player" type="CharacterBody2D" unique_id=1803677947]
-script = ExtResource("1_p0vlq")
+[node name="Player" type="CharacterBody2D" unique_id=1803677947 groups=["Player"]]
+script = ExtResource("1_v6fml")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=399299005]
 texture = ExtResource("2_v6fml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489724010]
 shape = SubResource("RectangleShape2D_3li8b")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1628576840]
+script = ExtResource("3_mdl7e")
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=931428892]
+script = ExtResource("4_qu4a1")

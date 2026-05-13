@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://clmhbb41ivd3j" path="res://sprites/biomes/Grass_Tileset_2.png" id="1_ahnoh"]
 [ext_resource type="PackedScene" uid="uid://ddi7x0qr8dv65" path="res://scenes/Player.tscn" id="1_yb3dy"]
 [ext_resource type="Script" uid="uid://crj6tpchu81yp" path="res://scripts/voronoi_gen.gd" id="2_xy8gb"]
+[ext_resource type="Script" uid="uid://bevl2f2bt25or" path="res://scripts/enemy/EnemySpawner.gd" id="4_ahnoh"]
+[ext_resource type="PackedScene" uid="uid://2lqquok7uhgm" path="res://scenes/GenericEnemy.tscn" id="5_wweom"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wweom"]
 texture = ExtResource("1_ahnoh")
@@ -69,4 +71,13 @@ border_noise_strength = 5.105
 position = Vector2(82, 82)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=169907874]
-zoom = Vector2(0.005, 0.005)
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=536447373]
+script = ExtResource("4_ahnoh")
+enemy_scene = ExtResource("5_wweom")
+max_enemies = 50
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=2119579484]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
